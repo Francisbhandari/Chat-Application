@@ -175,7 +175,7 @@ class User{
 
 class Server{
 	int fd, n_fd;
-	char *port;
+	const char *port;
 	struct addrinfo hints, *res, *p;
 	struct sockaddr_in their_addr;
 	socklen_t their_addr_size;
