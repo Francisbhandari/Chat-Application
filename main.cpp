@@ -177,7 +177,7 @@ class Server{
 	int fd, n_fd;
 	const char *port;
 	struct addrinfo hints, *res, *p;
-	struct sockaddr_in their_addr;
+	struct sockaddr_storage their_addr;
 	socklen_t their_addr_size;
 	std::string their_ipv4;
 	User user;
@@ -241,8 +241,11 @@ class Server{
 				std::exit(1);
 			}
 
-			char ipstr[INET_ADDRSTRLEN];
-			inet_ntop(AF_INET, &(their_addr.sin_addr), ipstr, INET_ADDRSTRLEN);
+			char ipstr[INET6_ADDRSTRLEN];
+			if (their_addr.ss_family == AF_INET)
+    			inet_ntop(AF_INET, &((sockaddr_in*)&their_addr)->sin_addr, ipstr, sizeof ipstr);
+			else
+    			inet_ntop(AF_INET6, &((sockaddr_in6*)&their_addr)->sin6_addr, ipstr, sizeof ipstr);
 			their_ipv4 = std::string(ipstr);
 			std::cout << "Connection established with " << their_ipv4 << std::endl<<std::endl;
 		}
