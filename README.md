@@ -104,13 +104,13 @@ The `Crypt` class implements a **Caesar cipher**:
 
 ---
 
-## Known Limitations
+## Additional Features
 
-- **Single client only** — The server handles one connection at a time; there is no multi-threading or `select`/`poll` loop.
-- **Fixed buffer size** — The receive buffer is 100 bytes; messages longer than this will be truncated.
-- **Plaintext credential file** — `users.txt` stores passwords as Caesar-encrypted strings, which is not cryptographically secure.
-- **No TLS** — All network traffic is unencrypted in transit.
-- **Sequential I/O** — The chat alternates turns strictly (server sends, client replies); free-form real-time messaging is not supported.
+- **Single client only** — Just for that special person
+- **Fixed buffer size** — Short and sweet
+- **Plaintext credential file** — hidden in plain sight, let people overthink
+- **No TLS** — Let the world peep all they want 
+- **Sequential I/O** — No one double text these days
 
 ---
 
